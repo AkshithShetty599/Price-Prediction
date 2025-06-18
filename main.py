@@ -3,7 +3,7 @@ import streamlit as st
 # --- Page Configuration ---
 st.set_page_config(
     page_title="San Francisco Rental Price Prediction",
-    layout='wide',
+    layout="centered",  # Better for mobile
     page_icon="🏠"
 )
 
@@ -17,7 +17,7 @@ hide_streamlit_style = """
 """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
-# --- Theme-Adaptive CSS ---
+# --- Theme-Adaptive + Mobile Responsive CSS ---
 theme_aware_style = """
     <style>
     h1, h2, h3 {
@@ -50,12 +50,30 @@ theme_aware_style = """
     p {
         color: var(--text-color);
     }
+
+    /* Responsive tweaks for smaller screens */
+    @media screen and (max-width: 768px) {
+        .highlight-box, .footer-note, h1, h2, h3, p, ul {
+            font-size: 16px !important;
+            line-height: 1.5 !important;
+        }
+        .center-text {
+            text-align: center !important;
+        }
+        .stButton > button {
+            width: 100% !important;
+        }
+        img {
+            width: 100% !important;
+            height: auto !important;
+        }
+    }
     </style>
 """
 st.markdown(theme_aware_style, unsafe_allow_html=True)
 
 # --- Centered Main Title ---
-st.markdown("<h1 class='center-text'>San Francisco Rental Price Predictor 🏙️</h1>", unsafe_allow_html=True)
+st.markdown("<h1 class='center-text'>San Francisco Rental Price Predictor</h1>", unsafe_allow_html=True)
 
 # --- Objective Section ---
 st.markdown("""
@@ -71,13 +89,11 @@ st.markdown("""
 # --- Map Section ---
 st.markdown("<h2 class='center-text'>📍 Map of San Francisco Neighborhoods</h2>", unsafe_allow_html=True)
 
-col1, col2, col3 = st.columns([1, 2, 1])
-with col2:
-    st.image(
-        "Data/SFAR_map.png",
-        caption="🗺️ Neighborhoods of San Francisco - Each area has unique rental characteristics that impact pricing.",
-        use_container_width=True
-    )
+st.image(
+    "Data/SFAR_map.png",
+    caption="🗺️ Neighborhoods of San Francisco - Each area has unique rental characteristics that impact pricing.",
+    use_container_width=True
+)
 
 # --- Detailed Overview Section ---
 st.markdown("""
@@ -120,6 +136,7 @@ st.markdown("""
 st.markdown("---")
 st.markdown("<h3 class='center-text'>🔍 Ready to Predict Rental Prices?</h3>", unsafe_allow_html=True)
 
-col_left, col_center, col_right = st.columns([2.2, 1, 2])
-with col_center:
-    st.page_link("pages/Predict.py", label="🧠 🚀 Start Prediction", icon="💡")
+# Button aligned center (works well on both desktop and mobile)
+st.markdown("<div style='text-align:center;'>", unsafe_allow_html=True)
+st.page_link("pages/Predict.py", label="🧠 🚀 Start Prediction", icon="💡")
+st.markdown("</div>", unsafe_allow_html=True)
