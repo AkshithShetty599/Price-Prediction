@@ -50,9 +50,6 @@ district_map = {
     10.0: "southwest"
 }
 
-# Title
-st.markdown("## 🏙️ San Francisco Rental Price Predictor")
-
 # Form UI
 with st.form("predict_form"):
     st.markdown("### 📝 Enter Property Details")
