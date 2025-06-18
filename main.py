@@ -53,12 +53,12 @@ theme_aware_style = """
 
     /* Responsive tweaks for smaller screens */
     @media screen and (max-width: 768px) {
-        .highlight-box, .footer-note, h1, h2, h3, p, ul {
+        h1.center-text {
+            font-size: 28px !important;
+        }
+        h2, h3, p, ul, .highlight-box, .footer-note {
             font-size: 16px !important;
             line-height: 1.5 !important;
-        }
-        .center-text {
-            text-align: center !important;
         }
         .stButton > button {
             width: 100% !important;
