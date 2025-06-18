@@ -122,4 +122,4 @@ st.markdown("<h3 class='center-text'>🔍 Ready to Predict Rental Prices?</h3>",
 
 col_left, col_center, col_right = st.columns([2.2, 1, 2])
 with col_center:
-    st.page_link("pages/Predict.py", label="🧠 🚀 Start Prediction", icon="💡")
+    st.page_link("Pages/Predict.py", label="🧠 🚀 Start Prediction", icon="💡")

@@ -17,8 +17,8 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Load the model
-model = joblib.load("model.pkl")
+
+model = joblib.load('./model.pkl')
 
 # Mapping dictionaries
 laundry_map = {
