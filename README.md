@@ -1,35 +1,161 @@
-# Project Title: Data Analysis with Linear Regression
+# 🏙️ San Francisco Rental Price Prediction
 
-## Overview
-This project involves performing a data analysis using Python and linear regression techniques. The analysis is performed using a dataset loaded from a CSV file. The project workflow includes handling missing data, data encoding, model training, and performance evaluation. The aim is to build a predictive model using linear regression and evaluate its performance using metrics such as R² score and Mean Absolute Error (MAE).
+## 📌 Overview
+This project combines **data analysis** using Python and **linear regression modeling** with an interactive **Streamlit web application** for predicting rental prices of housing units in San Francisco. The project starts with exploring the dataset, preprocessing it, and building a predictive model, which is then deployed using Streamlit for user interaction.
 
-## Project Structure
-The project is structured as a Jupyter Notebook (`Analysis.ipynb`), which contains code for loading, preprocessing, and analyzing the dataset. The notebook is accompanied by explanations for each step, making it easy to follow the analysis process.
+---
 
-## Key Steps in the Analysis
-1. **Loading the Dataset:** The dataset is loaded using the Pandas library.
-2. **Data Preprocessing:** This step involves checking for missing values and encoding categorical variables into numerical form using one-hot encoding.
-3. **Train-Test Split:** The dataset is split into training and testing sets for model evaluation.
-4. **Model Training:** A linear regression model is trained on the training dataset.
-5. **Model Evaluation:** The model is evaluated using R² score and MAE on both training and validation sets.
-6. **Feature Importance:** The significance of features is assessed by analyzing the model's coefficients.
-7. **Residual Analysis:** Residuals are plotted to check for patterns, indicating the model's appropriateness.
-8. **Final Model Performance:** The model's performance is assessed on the test dataset.
+## 📁 Project Structure
 
-## How to Use
-1. Clone this repository to your local machine:
+```
+.
+├── Analysis.ipynb         # Jupyter Notebook with data exploration and modeling
+├── Home.py                # Streamlit homepage with project overview
+├── predict.py             # Streamlit page for price prediction form
+├── model.pkl              # Trained linear regression model
+├── Data/
+│   └── SFAR_map.png       # San Francisco neighborhood map image
+├── requirements.txt       # Project dependencies
+└── README.md              # Project documentation
+```
+
+---
+
+## 📊 Key Steps in the Analysis (`Analysis.ipynb`)
+
+1. **Dataset Loading**  
+   Loaded using the `pandas` library from a CSV file.
+
+2. **Data Preprocessing**  
+   - Checked and handled missing values.  
+   - Encoded categorical variables using one-hot encoding.
+
+3. **Train-Test Split**  
+   Split the dataset into training and testing sets.
+
+4. **Model Training**  
+   Trained a **linear regression** model using `statsmodels`.
+
+5. **Model Evaluation**  
+   Used **R² score** and **Mean Absolute Error (MAE)** to evaluate model performance.
+
+6. **Feature Importance**  
+   Examined model coefficients to interpret feature impact.
+
+7. **Residual Analysis**  
+   Visualized residuals to validate linear regression assumptions.
+
+8. **Final Performance**  
+   Achieved **R² score = 0.784** and **MAE ≈ $436.50** on the test set.
+
+---
+
+## 🌐 Streamlit Web Application
+
+### `Home.py`: Welcome Page
+- Displays project objective and context.
+- Explains key influencing features:
+  - Square footage
+  - Bedrooms & bathrooms
+  - Laundry type
+  - Pet policy
+  - Housing type
+  - Parking availability
+  - Neighborhood/District
+- Displays San Francisco district map.
+- Includes navigation to prediction form.
+
+### `predict.py`: Prediction Interface
+- Users enter property details.
+- Model makes prediction using trained coefficients.
+- Displays **estimated rent price** in dollars using `model.pkl`.
+
+---
+
+## 🚀 How to Run the Project Locally
+
+1. **Clone the Repository**
    ```bash
    git clone <repository-url>
+   cd <project-folder>
    ```
-2. Install the necessary dependencies listed in the `requirements.txt` file:
+
+2. **Install Dependencies**
    ```bash
    pip install -r requirements.txt
    ```
-3. Open the Jupyter Notebook (`Analysis.ipynb`) and run the cells in sequence. Detailed explanations are provided after each cell to help understand the analysis.
 
-## Results
-The linear regression model built in this project provides an R² score of 0.784 on the test set, indicating a good fit. The model's MAE is 436.5, showing decent predictive accuracy.
+3. **Start Streamlit App**
+   ```bash
+   streamlit run Home.py
+   ```
 
-## Conclusion
-This project demonstrates the use of linear regression for predictive modeling, with a focus on data preprocessing, feature selection, and model evaluation. It highlights the importance of checking model assumptions and assessing feature importance for a successful analysis.
+   You can then navigate to the prediction page from the UI.
 
+---
+
+## 💡 Objective
+To assist **tenants, landlords, and agents** in estimating fair rental prices across San Francisco using a machine learning model trained on real-world data. This tool:
+- Increases transparency.
+- Encourages data-driven decisions.
+- Simplifies affordability checks.
+
+---
+
+## 📈 Sample Prediction Logic
+
+- User input is collected via form.
+- Data is encoded and aligned to model format.
+- Prediction is made on log(price) scale and converted back using exponential.
+- Output is displayed as:
+  ```python
+  st.success(f"Estimated Rent: ${predicted_price}")
+  ```
+
+---
+
+## 📷 Screenshot
+
+| Home Page | Prediction Page |
+|-----------|-----------------|
+| ![SF Map](Data/SFAR_map.png) | Prediction shown after form submission |
+
+---
+
+## 📌 Results
+
+- **Model**: Linear Regression (`statsmodels`)
+- **R² Score**: 0.784
+- **Mean Absolute Error (MAE)**: $436.50
+- **Deployment**: Interactive UI via Streamlit
+
+---
+
+## 📚 Conclusion
+
+This project demonstrates:
+- The power of **linear regression** for price prediction.
+- The importance of **feature engineering** and **data preprocessing**.
+- Deployment of machine learning models using **Streamlit** for real-time predictions.
+
+---
+
+## 🔧 Tools & Technologies
+
+- Python
+- Pandas, NumPy
+- statsmodels
+- Streamlit
+- joblib (for model serialization)
+
+---
+
+## 🙌 Acknowledgements
+
+Special thanks to open-source data contributors and the San Francisco Association of Realtors for public district mappings.
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License - see the `LICENSE` file for details.
