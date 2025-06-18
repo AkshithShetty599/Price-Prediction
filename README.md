@@ -9,14 +9,21 @@ This project combines **data analysis** using Python and **linear regression mod
 
 ```
 .
-├── Analysis.ipynb         # Jupyter Notebook with data exploration and modeling
-├── Home.py                # Streamlit homepage with project overview
-├── predict.py             # Streamlit page for price prediction form
-├── model.pkl              # Trained linear regression model
+├── main.py                      # Entry point that links to Streamlit pages
+├── model.pkl                    # Trained regression model file
+├── requirements.txt             # Python dependencies for the project
+├── README.md                    # Project documentation
+├── .gitignore                   # Git ignore rules
+│
+├── notebooks/
+│   └── Analysis.ipynb           # Jupyter notebook with data exploration and modeling
+│
 ├── Data/
-│   └── SFAR_map.png       # San Francisco neighborhood map image
-├── requirements.txt       # Project dependencies
-└── README.md              # Project documentation
+│   ├── sf_clean.csv             # Cleaned dataset
+│   └── SFAR_map.png             # SF neighborhood visual map
+│
+├── Pages/
+│   └── Predict.py               # Streamlit page for rental price prediction
 ```
 
 ---
